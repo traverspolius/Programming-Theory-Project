@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour // INHERITANCE
 {
     [SerializeField]
     private Sprite bgImage;
@@ -13,6 +14,9 @@ public class GameController : MonoBehaviour
     public List<Sprite> gamePuzzles = new List<Sprite>();
 
     public List<Button> btns = new List<Button>();
+
+    public GameObject GameOverText = GameObject.FindGameObjectWithTag("GameOverText");
+  
 
     private bool firstGuess, secondGuess;
 
@@ -34,6 +38,7 @@ public class GameController : MonoBehaviour
         AddGamePuzzles();
         Shuffle(gamePuzzles);
         gameGuesses = (gamePuzzles.Count / 2);
+        GameOverText.SetActive(false);
     }
 
     void GetButtons()
@@ -73,7 +78,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void PickAPuzzle()
+    public void PickAPuzzle() 
     {
         string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
         if(!firstGuess)
@@ -132,6 +137,10 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game Finished");
             Debug.Log("Total guesses = " + countGuesses + " !");
+            
+            GameOverText.SetActive(true);
+            
+            
         }
     }
 

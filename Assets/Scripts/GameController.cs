@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour // INHERITANCE
 
     public List<Button> btns = new List<Button>();
 
-    public GameObject GameOverText = GameObject.FindGameObjectWithTag("GameOverText");
+    public GameObject GameOverText;
   
 
     private bool firstGuess, secondGuess;
@@ -135,8 +135,12 @@ public class GameController : MonoBehaviour // INHERITANCE
 
         if(countCorrectGuesses == gameGuesses)
         {
+            MenuSceneUI.mmplayer.GameGuesses = countGuesses;
+            MenuSceneUI.mmplayer.Name = "Steve";
+            MenuSceneUI.mmplayer.Score = 100;
             Debug.Log("Game Finished");
             Debug.Log("Total guesses = " + countGuesses + " !");
+            Debug.Log(MenuSceneUI.mmplayer.GetPlayerInfo());
             
             GameOverText.SetActive(true);
             

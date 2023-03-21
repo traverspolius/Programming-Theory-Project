@@ -8,13 +8,14 @@ using UnityEngine.UI;
 public class MenuSceneUI : MonoBehaviour
 {
     public static MenuSceneUI menuScene;
+    public static MemoryMatchPlayer mmplayer;
 
     private void Awake()
     {
         if (menuScene == null)
         {
             menuScene = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -24,6 +25,10 @@ public class MenuSceneUI : MonoBehaviour
 
     public void StartNewGame()
     {
+        mmplayer = new MemoryMatchPlayer();
+        mmplayer.Name = "Bob";
+        Debug.Log(mmplayer.GetPlayerInfo());
         SceneManager.LoadScene(1);
+        
     }
 }

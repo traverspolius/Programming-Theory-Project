@@ -37,9 +37,10 @@ public class Player // INHERITANCE - parent
         string player_info = "";
         player_info = "Name: ";
         player_info += this.name;
-        player_info += " /n";
+        player_info += " \n ";
         player_info += "Score: ";
         player_info += this.score.ToString();
+        player_info += " \n ";
         return player_info;
     }
 }

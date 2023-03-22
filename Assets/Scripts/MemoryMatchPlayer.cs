@@ -25,7 +25,6 @@ public class MemoryMatchPlayer : Player // INHERITANCE - child
     public override string GetPlayerInfo()// POLYMORPHISM
     {
         string player_info = base.GetPlayerInfo();
-        player_info += "/n";
         player_info += "Total Gueses: ";
         player_info += this.gameGuesses.ToString();
         return player_info;

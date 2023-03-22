@@ -135,15 +135,11 @@ public class GameController : MonoBehaviour // INHERITANCE
         if(countCorrectGuesses == gameGuesses)
         {
             MenuSceneUI.mmplayer.GameGuesses = countGuesses;
-            MenuSceneUI.mmplayer.Name = "Steve";
-            MenuSceneUI.mmplayer.Score = 100;
-            Debug.Log("Game Finished");
-            Debug.Log("Total guesses = " + countGuesses + " !");
-            Debug.Log(MenuSceneUI.mmplayer.GetPlayerInfo());
+            MenuSceneUI.mmplayer.Name = "Player 1";
+            MenuSceneUI.mmplayer.Score = 100 - countGuesses;
             
-            GameOverText.SetActive(true);
-            
-            
+            GameOverText.GetComponent<Text>().text = "Good Job :) \n" + MenuSceneUI.mmplayer.GetPlayerInfo();
+            GameOverText.SetActive(true);           
         }
     }
 

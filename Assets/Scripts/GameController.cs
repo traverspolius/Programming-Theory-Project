@@ -14,7 +14,9 @@ public class GameController : MonoBehaviour // INHERITANCE
 
     public List<Button> btns = new List<Button>();
 
-    public GameObject GameOverText;
+    public GameOverScript game_over_ui;
+
+ 
   
 
     private bool firstGuess, secondGuess;
@@ -37,7 +39,7 @@ public class GameController : MonoBehaviour // INHERITANCE
         AddGamePuzzles();
         Shuffle(gamePuzzles);
         gameGuesses = (gamePuzzles.Count / 2);
-        GameOverText.SetActive(false);
+       
     }
 
     void GetButtons()
@@ -79,7 +81,6 @@ public class GameController : MonoBehaviour // INHERITANCE
 
     public void PickAPuzzle() 
     {
-        string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
         if(!firstGuess)
         {
             firstGuess = true;
@@ -135,9 +136,8 @@ public class GameController : MonoBehaviour // INHERITANCE
         if(countCorrectGuesses == gameGuesses)
         {
             MenuSceneUI.mmplayer.GameGuesses = countGuesses;
-            MenuSceneUI.mmplayer.Name = "Mr.Todd Testington III";
-            GameOverText.GetComponent<Text>().text = MenuSceneUI.mmplayer.GetPlayerInfo();
-            GameOverText.SetActive(true);           
+            game_over_ui.Setup(MenuSceneUI.mmplayer.GetScore());
+            game_over_ui.transform.gameObject.SetActive(true);
         }
     }
 

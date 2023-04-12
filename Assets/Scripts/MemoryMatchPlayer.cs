@@ -31,7 +31,7 @@ public class MemoryMatchPlayer : Player // INHERITANCE - child
     public override string GetPlayerInfo()// POLYMORPHISM
     {
         string player_info = this.GetScoreRank() + " \n" + base.GetPlayerInfo();
-        player_info += "Total Gueses: ";
+        player_info += "Total Guesses: ";
         player_info += this.GameGuesses.ToString();
         return player_info;
     }
@@ -54,6 +54,16 @@ public class MemoryMatchPlayer : Player // INHERITANCE - child
         }
 
         return scoreRank;
+    }
+
+    public int GetScore()
+    {
+        int temp_score = MAX_SCORE;
+
+        if (this.GameGuesses > 0)
+            temp_score = GetCalculatedScore();
+
+        return temp_score;
     }
 
     private int GetCalculatedScore()
